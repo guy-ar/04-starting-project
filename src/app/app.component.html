@@ -2,10 +2,14 @@
 
 <main>
   <div id="dashboard">
-    <app-servers [currentStatus]="currentStatus"/>
-
-    <app-trafic/>
-
-    <app-support/>
+    <div class="dashboard-item">
+      <app-servers [currentStatus]="currentStatus"/>
+    </div>
+    <div class="dashboard-item">
+      <app-trafic/>
+    </div>
+    <div class="dashboard-item">
+      <app-support/>
+    </div>
   </div>
 </main>
