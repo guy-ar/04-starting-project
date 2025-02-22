@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
 import { HeaderComponent } from "./components/header/header.component";
 import { ServersComponent } from "./components/dashboard/servers/servers.component";
 import { TraficComponent } from "./components/dashboard/trafic/trafic.component";
@@ -12,14 +12,13 @@ import { DashboardItemComponent } from "./components/dashboard/dashboard-item/da
   imports: [HeaderComponent, ServersComponent, TraficComponent, SupportComponent, DashboardItemComponent],
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
 
   currentStatus: 'online' | 'offline' | 'unknown'= 'online';
-  //currentStatus = 'offline';
-  private interval?: ReturnType<typeof setInterval>;
-
+  
+  private destroyRef = inject(DestroyRef);
   ngOnInit(): void {
-    this.interval = setInterval(() => {
+    const interval = setInterval(() => {
       const random = Math.random(); 
       if (random > 0.7) {
         this.currentStatus = 'unknown';
@@ -29,10 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.currentStatus = 'online';
       } 
     }, 5000)
-    
+    this.destroyRef.onDestroy(() => clearInterval(interval));
   }
 
-  ngOnDestroy(): void {
-    clearInterval(this.interval);
-  }
 }
