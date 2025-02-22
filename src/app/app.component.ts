@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HeaderComponent } from "./components/header/header.component";
 import { ServersComponent } from "./components/dashboard/servers/servers.component";
 import { TraficComponent } from "./components/dashboard/trafic/trafic.component";
 import { SupportComponent } from "./components/dashboard/support/support.component";
 import { DashboardItemComponent } from "./components/dashboard/dashboard-item/dashboard-item.component";
+
 
 @Component({
   selector: 'app-root',
@@ -11,13 +12,14 @@ import { DashboardItemComponent } from "./components/dashboard/dashboard-item/da
   imports: [HeaderComponent, ServersComponent, TraficComponent, SupportComponent, DashboardItemComponent],
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit {
-  
+export class AppComponent implements OnInit, OnDestroy {
+
   currentStatus: 'online' | 'offline' | 'unknown'= 'online';
   //currentStatus = 'offline';
+  private interval?: ReturnType<typeof setInterval>;
 
   ngOnInit(): void {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       const random = Math.random(); 
       if (random > 0.7) {
         this.currentStatus = 'unknown';
@@ -28,5 +30,9 @@ export class AppComponent implements OnInit {
       } 
     }, 5000)
     
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 }
