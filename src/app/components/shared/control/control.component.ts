@@ -1,4 +1,4 @@
-import { Component, input, ViewEncapsulation } from '@angular/core';
+import { Component, Host, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -6,7 +6,10 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
   imports: [],
   templateUrl: './control.component.html',
   styleUrl: './control.component.css',
-  encapsulation: ViewEncapsulation.None // insure that current style will become global
+  encapsulation: ViewEncapsulation.None, // insure that current style will become global
+  host: {
+    class: 'control'
+  }
 })
 export class ControlComponent {
   label = input.required<string>()
