@@ -13,6 +13,6 @@ import { DashboardItemComponent } from "./components/dashboard/dashboard-item/da
 })
 export class AppComponent {
   
-  //currentStatus = 'online';
-  currentStatus = 'offline';
+  currentStatus = 'online';
+  //currentStatus = 'offline';
 }
