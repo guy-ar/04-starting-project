@@ -1,4 +1,4 @@
-import { Component, Host, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Host, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -20,10 +20,12 @@ export class ControlComponent {
   // @HostListener('click') onClick() {
   //   console.log('click')
   // }
+  private el = inject(ElementRef) // getting refernece to the host element
 
   // 2nd way to use host attributes it so have the onclick method and use the event click atribute to connect tothe function
   onClick() {
     console.log('click')
+    console.log(this.el)
   }
 
 }
