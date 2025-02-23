@@ -1,7 +1,7 @@
 export interface Ticket {
     id: string;
     title: string;
-    requst: string;
+    request: string;
     status: 'open' | 'closed';
 }
 export interface TicketInput {

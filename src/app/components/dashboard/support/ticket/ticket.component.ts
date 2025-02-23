@@ -9,7 +9,7 @@ import { Ticket } from '../../../../model/ticket.model';
   styleUrl: './ticket.component.css'
 })
 export class TicketComponent {
-  ticket = input.required<Ticket>();
+  ticketData = input.required<Ticket>();
   delete = output<string>();
 
 }

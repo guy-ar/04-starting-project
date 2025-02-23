@@ -17,7 +17,7 @@ export class SupportComponent {
     const newTicket: Ticket = {
       id: Math.random().toString(),
       title: ticketData.title,  
-      requst: ticketData.request,
+      request: ticketData.request,
       status: 'open'
     }
     this.tickets.push(newTicket);
