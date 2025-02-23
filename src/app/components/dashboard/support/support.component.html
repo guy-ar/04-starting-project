@@ -1,5 +1,36 @@
+<div>
+  <ul>
+    @for (ticket of tickets; track ticket.id) {
+      <li>
+        <app-ticket [ticket]="ticket" (delete)="onDeleteTicket($event)" />
+        <hr>
+        <p>
+          is this the first element? {{ $first }}
+        </p>
+        <p>
+          is this the last element? {{ $last }}
+        </p>
+        <p>
+          is this odd element? {{ $odd }}
+        </p>
+        <p>
+          is this even element? {{ $even }}
+        </p>
+        <p>
+          the total number of elements {{ $count }}
+        </p>
+       
+      </li>
+    } @empty { 
+      <!-- thisn is used in case the for loop is empty -->
+      <li>
+        <p>No tickets found</p>
+      </li>
+    }
+  </ul>
+</div>
 <div id="new-ticket">
-  <app-new-ticket/>
+  <app-new-ticket (add)="onAddTicket($event)"/>
 </div>
 
 
