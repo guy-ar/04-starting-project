@@ -2,7 +2,7 @@
   <ul>
     @for (ticket of tickets; track ticket.id) {
       <li>
-        <app-ticket [ticketData]="ticket" (delete)="onDeleteTicket($event)" />
+        <app-ticket [ticketData]="ticket" (delete)="onDeleteTicket($event)" (delete)="onDeleteTicket($event)"/>
       </li>
     } @empty { 
       <!-- thisn is used in case the for loop is empty -->
@@ -13,7 +13,7 @@
   </ul>
 </div>
 <div id="new-ticket">
-  <app-new-ticket (add)="onAddTicket($event)"/>
+  <app-new-ticket (add)="onAddTicket($event)" />
 </div>
 
 

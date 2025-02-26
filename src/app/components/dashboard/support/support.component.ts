@@ -23,7 +23,12 @@ export class SupportComponent {
     this.tickets.push(newTicket);
   }
   onDeleteTicket(ticketId: string) {
-    this.tickets = this.tickets.filter(ticket => ticket.id !== ticketId);
+    this.tickets = this.tickets.map((ticket) => {
+      if (ticket.id === ticketId) {
+        return {...ticket, status: 'closed'} //spread operator to create a new object and not mutate the original object. 
+      }
+      return ticket;
+    });
   } 
 
 }
